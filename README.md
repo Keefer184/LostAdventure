@@ -1,6 +1,6 @@
 # LostAdventure
 Repository for the work on my C++ and Unreal Live Project
-##Skills Acquired
+## Skills Acquired
 - Experience with visual scripting
 - Generate AI behavior
 - Creating a combat system
