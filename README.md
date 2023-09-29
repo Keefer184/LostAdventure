@@ -78,7 +78,11 @@ A widget that was called on start acted as the HUD for the game. Along with the 
 
 ![PlayerHealth](PlayerHealth.png)
 
-A simple clamp to ensure the player only took enough damage to lose one life was utilized as well as a cast to the game mode to update the lives if he was killed.
+A simple clamp to ensure the player only took enough damage to lose one life was utilized as well as a cast to the game mode to update the lives if he was killed.  The health bar was created using a progress bar component and tied to a function called "GetPercent" that was regularly pulling the Health of the character.  The player's life was set to 100, and so all that needed to be included to ensure the bar was correct was a simple division by 100, but this could have easily been modified to the player's max health if a leveling system were implemented.
+
+![GetPercent](GetPercent.png)
+
+## AI/NPC and Boss
 
 
 https://github.com/Keefer184/LostAdventure/assets/136768491/e9040159-eb88-40bf-ae86-e56a2c5c823c
