@@ -123,7 +123,7 @@ Other features that were implemented simply for a more game like feel were the g
 
 The fall damage system was done by applying an "Event OnMovementChange" node that intialized while the character was in the falling state.  Using a retriggerable delay, the damage escalated after a set amount of time in the air.  This simply calculated the total damage to be done, but then an "Event OnLand" node is when the actual damage was applied.
 
-![FallDamage](FallDamage.png)
+![FallDamage](./LostAdventureGifsandSS/FallDamage.png)
 
 The controls and opening scene were more for aesthetics that brought intrigue and created more playability.  Since there were so many controls, I needed a reference guide for the players.  The control scene could be accessed at both the opening scene and in the pause menu in the main scene.  It was accessible through a button in each scene.
 
