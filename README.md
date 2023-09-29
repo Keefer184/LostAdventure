@@ -106,7 +106,31 @@ Some cool features of the NPC are that there is no actual skeletal mesh present,
 Another thing I am pleased with is the health bar connected to the NPC.  This was done by creating a progress bar component above each NPC and applied the UI to Screen instead of World.  This made the size managable and always mad the health bar face the game screen.  The clever trick to make it not constantly visible, even when in another room, was disabling the visibility upon instantiation of the NPC.  Then, change the visibility to active once the NPC either saw the player, or by capsule component collision.  This was done for the purpose of only being made visible during engagement.
 
 ### Boss
-The final level boss was essentially an enlarged NPC with customized pawn sensing, speed and 
+The final level boss was essentially an enlarged NPC with customized pawn sensing range and speed.  The biggest differences were the health bar was actually a completely new UI element and was only called with the Boss spawns, and the direction of attack. Since the boss was so much bigger, the biggest issue was he could never attack the player because the "cast arrow" was always facing directly forward, meaning he always cast too high and missed the player. To fix this, I adusted the cast arrow to rotate in the direction of the player once he was seen.  It took a few tries to get it right, but a simple "Find Look at Rotation" node ended up doing the trick.
+
+![BossLook](BossLook.png)
+
+Another key difference was the spawn.  To spawn the Boss, I created a large trigger box around the last collectable needed.  This meant that the Boss spawned before it could be reached.  The cool feature that was added though, was that once the Boss spawned, the Sun dissappeared and the global illumination was affected.  This was created within the Level blueprint using a "Do Once" node so that the sun would not just keep spinning around and around.
+
+![SunDrop](https://github.com/Keefer184/LostAdventure/assets/136768491/10cb7fea-4847-4ff3-b582-c1113b1f5382)
+
+Here is the overall effect created by this.  Keep in mind, the graphics were scaled down for construction purposes, and on a system with a high functioning GPU, the effect is far more daunting.
 
 https://github.com/Keefer184/LostAdventure/assets/136768491/e9040159-eb88-40bf-ae86-e56a2c5c823c
 
+## Other Features
+Other features that were implemented simply for a more game like feel were the graduated fall damage system, the opening scene and control menu, and the flashlight orb.
+
+The fall damage system was done by applying an "Event OnMovementChange" node that intialized while the character was in the falling state.  Using a retriggerable delay, the damage escalated after a set amount of time in the air.  This simply calculated the total damage to be done, but then an "Event OnLand" node is when the actual damage was applied.
+
+![FallDamage](FallDamage.png)
+
+The controls and opening scene were more for aesthetics that brought intrigue and created more playability.  Since there were so many controls, I needed a reference guide for the players.  The control scene could be accessed at both the opening scene and in the pause menu in the main scene.  It was accessible through a button in each scene.
+
+![OpeningSceneControls](OpeningandControls.gif)
+
+The flashlight orb was called with a simple input and flip flop node.
+
+![FlaslightOrb](FlashlightOrb.png)
+
+It was created using a niagra system similar to the powers, but using a sphere as the mesh instead of the skeletal mesh.  The materials used were emmissive materials, so when there were no lights, it provided a small personal lighting system that would follow the character.  It was a component attached to the character and was triggered by simply setting its visibility.
