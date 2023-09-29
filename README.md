@@ -20,7 +20,7 @@ https://github.com/Keefer184/LostAdventure/assets/136768491/c78414af-0594-4c92-a
 
 ## Traps/BP Interfaces
 The game featured two main styles of traps, a swinging spike pendulum and large arrows/spears as projectiles.  Both of these traps were triggered using pressure plates.  The coding was made easier by utilizing Blueprint Interfaces.  
-![Trap Trigger](./LostAdventureGifsandSS/TrapTrigger.png)
+![Trap Trigger](TrapTrigger.png)
 
 The "On Activate" node is what called the action of the pendulums.  Each pressure plate was given an array of pendulum BP or arrow BP to activate utizing a public array.  The array size was not specified so that each plate could trigger any amount of pendulums or arrows desired.  Here is a clip of the arrow traps in action.
 
@@ -36,7 +36,7 @@ The elevators that you can activate to go both up and down made use of timelines
 
 A gate was used so that the player must be within a certain range (outlined by a Box collider) and only enabled input when the character entered the box, but disabled input when they left.  Here is an example of both the elevator and pendulum traps being triggered.
 
-![ElevatorTraps](./LostAdventureGifsandSS/ElevatorTrapsRespawn.png)
+![ElevatorTraps](./LostAdventureGifsandSS/ElevatorTrapsRespawn.gif)
 
 ## Collectables and Win Condition
 The next task was to create a win condition as well as collectables that the player could pick up.  To encourage full play through of the level, I created collectables that the player needed four of in order to enable to final door (win condition) to be opened.  The collectables were created using a statue asset for the mesh, but then included some hovering text and a simple niagara system to make them stand out in the game.  Each collectable that was "picked up" would dissapear on pick up and then add one to the number of keys attained (controlled by the game mode called ThirdPersonGameMode).
