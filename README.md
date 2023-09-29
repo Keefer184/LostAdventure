@@ -11,5 +11,5 @@ Repository for the work on my C++ and Unreal Live Project
 - Creating interactive blueprints utilizing blueprint interfaces
 - Producing non-overlapping powerup systems utilizing layered Niagara effects and self-created materials
 - Utilizing lighting to create both ambient and situational atmospheres
-
+- Experience working withing an Agile/Scrum Environment
 
