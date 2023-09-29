@@ -60,7 +60,7 @@ In a bit of personal creativity, I wanted the character to have mulitple powers.
 
 One of the challenges of this system was to make sure that the powers were never activated at the same time because it would eat so much memory.  I created a boolean for each power and with each input checked to ensure neither of the other powers were activated using an OR node.  A simple FlipFlop node made sure that I could deactivate the powers to reset the boolean and stop the niagra system before I could activate a different power.  
 
-![PowerUps](PowerupEX.png)
+![PowerUps](PowerupEx.png)
 
 The project timeline was two weeks, and if I had a bit longer I would have created animations to go with each powerups. 
 
