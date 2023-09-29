@@ -83,7 +83,30 @@ A simple clamp to ensure the player only took enough damage to lose one life was
 ![GetPercent](GetPercent.png)
 
 ## AI/NPC and Boss
+The most time consuming part of this project was AI and Boss behavior.  I tried multiple ways of creating AI behavior, including behavior trees.  A lot of bugs came up that needed finessing and there just was not enough time to find and adjust them all.  So, in order to create that NPC feel, I ended up scripting the behaviors directly into the AI BP.  The first thing I did was create a NavMesh in each area I inteded to have an NPC.
 
+![NavMesh](Navmesh.png)
+
+Once I had those baked the way I wanted by limiting or expanding the depth, I implented the Patrol behavior. This was done primarily using the node "GetRandomReachablePointInRadius", and I essentially created a loop in which the character was constanly iterating to the next point within his range on the NavMesh.  While this is not the cleanest method, it worked for the project's purpose.
+
+![AIPatrol](AIPatrol.png)
+
+Next I used pawn sensing through sight to initiate a custom follow event.  Once the AI sensed the player, they would move to their position constantly.  I had to lower the AI run speed to ensure that the character would be able to get away, otherwise that would be too oppressive.  Using a "canAttack" boolean, once the AI was withing a reasonable range of the player, he would begin attacking the player.  If the player moved out of range, the AI Move To node would fail, so I had the NPC beging the Patrol function again.
+
+![AIAttack](./LostAdventureGifsandSS/AIPawnSensingAndActions.png)
+
+Here you can see an example of how this plays out in the game.
+
+![NPCBattle](NPCandBattle.gif)
+
+Some cool features of the NPC are that there is no actual skeletal mesh present, but rather it is a combination of an overaly material with a panner and the same niagra system for the fire powers.  This was a creative decision because the level was in the desert and so fighting essentially a Sun diety seemed like a good fit.  In addition, the NPC is also launching the same fireball that the player can launch, this was for efficiency as well as fitting the back story of the main character being a demi-god fighting against a deity from whom his powers originated.  The NPC and Boss all used the same animations as the character, and to create the casting effect, I personally went in and frame by frame adapted the current animations using the sequencer tool.  The problem was the legs were not matching well, so what I did was use a "Layered Blend per Bone" node and cached poses to blend my updated animation with the normal character movemnts.  Here is the anim graph that both the NPC and the player character used.
+
+![AnimGraph](./LostAdventureGifsandSS/AnimGraph.png)
+
+Another thing I am pleased with is the health bar connected to the NPC.  This was done by creating a progress bar component above each NPC and applied the UI to Screen instead of World.  This made the size managable and always mad the health bar face the game screen.  The clever trick to make it not constantly visible, even when in another room, was disabling the visibility upon instantiation of the NPC.  Then, change the visibility to active once the NPC either saw the player, or by capsule component collision.  This was done for the purpose of only being made visible during engagement.
+
+### Boss
+The final level boss was essentially an enlarged NPC with customized pawn sensing, speed and 
 
 https://github.com/Keefer184/LostAdventure/assets/136768491/e9040159-eb88-40bf-ae86-e56a2c5c823c
 
