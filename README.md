@@ -89,7 +89,7 @@ The most time consuming part of this project was AI and Boss behavior.  I tried 
 
 Once I had those baked the way I wanted by limiting or expanding the depth, I implented the Patrol behavior. This was done primarily using the node "GetRandomReachablePointInRadius", and I essentially created a loop in which the character was constanly iterating to the next point within his range on the NavMesh.  While this is not the cleanest method, it worked for the project's purpose.
 
-![AIPatrol](AIPatrol.png)
+![AIPatrol](./LostAdventureGifsandSS/AIPatrol.png)
 
 Next I used pawn sensing through sight to initiate a custom follow event.  Once the AI sensed the player, they would move to their position constantly.  I had to lower the AI run speed to ensure that the character would be able to get away, otherwise that would be too oppressive.  Using a "canAttack" boolean, once the AI was withing a reasonable range of the player, he would begin attacking the player.  If the player moved out of range, the AI Move To node would fail, so I had the NPC beging the Patrol function again.
 
